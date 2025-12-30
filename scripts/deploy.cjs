@@ -7,7 +7,7 @@ const main = async () => {
   const bytecode = fs.readFileSync("./build/MoralTextNft.bytecode.txt", "utf8").trim();
 
   // Connect to local Hardhat node
-  const provider = new ethers.JsonRpcProvider("http://host.docker.internal:8545");
+  const provider = new ethers.JsonRpcProvider("http://localhost:8545");
 
   // Use the first Hardhat account as the deployer
   const signer = new ethers.Wallet(
