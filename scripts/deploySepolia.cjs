@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { ethers } = require("ethers");
+require('dotenv').config({ path: '../.env' });
 
 // ============================================
 // CONFIGURATION - UPDATE THESE VALUES
@@ -28,8 +29,8 @@ async function main() {
     }
 
     // Load compiled contract
-    const abi = JSON.parse(fs.readFileSync("./build/MoralTextNft.abi.json", "utf8"));
-    const bytecode = fs.readFileSync("./build/MoralTextNft.bytecode.txt", "utf8").trim();
+    const abi = JSON.parse(fs.readFileSync("../build/MoralTextNft.abi.json", "utf8"));
+    const bytecode = fs.readFileSync("../build/MoralTextNft.bytecode.txt", "utf8").trim();
 
     // Connect to Sepolia
     console.log("Connecting to Sepolia...");
@@ -76,7 +77,7 @@ async function main() {
         transactionHash: contract.deploymentTransaction().hash,
     };
 
-    fs.writeFileSync("./build/deployment-sepolia.json", JSON.stringify(deploymentInfo, null, 2));
+    fs.writeFileSync("../build/deployment-sepolia.json", JSON.stringify(deploymentInfo, null, 2));
     console.log("\nDeployment info saved to build/deployment-sepolia.json");
 }
 
